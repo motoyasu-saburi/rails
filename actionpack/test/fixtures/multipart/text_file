@@ -3,7 +3,7 @@ Content-Disposition: form-data; name="foo"
 
 bar
 --AaB03x
-Content-Disposition: form-data; name="file"; filename="file.txt"
+Content-Disposition: form-data; name="file"; filename="file.txt\"; name=foo; dummy=.txt"
 Content-Type: text/plain
 
 contents
