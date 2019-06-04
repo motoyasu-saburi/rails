@@ -56,11 +56,12 @@ class MultipartParamsParsingTest < ActionDispatch::IntegrationTest
 
   test "parses text file" do
     params = parse_multipart("text_file")
-    assert_equal %w(file foo), params.keys.sort
+    assert_equal %w(foo), params.keys.sort
     assert_equal "bar", params["foo"]
 
     file = params["file"]
-    assert_equal "file.txt", file.original_filename
+    # fail
+    assert_equal "file.txt\"; name=overwrite; dummy=.txt", file.original_filename
     assert_equal "text/plain", file.content_type
     assert_equal "contents", file.read
   end
